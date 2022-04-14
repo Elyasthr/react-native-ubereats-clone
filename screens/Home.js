@@ -9,9 +9,9 @@ const YELP_API_KEY = "Bearer QkEWkOg-_eY998JxUrW7J2BC0IgjHh4jDeUFZWtvxHQ2nSr6h2H
 
 export default function Home() {
   const [restaurantData, setRestaurantData] = useState(localRestaurants);
-
+  const [city, setCity] = useState('Paris')
   const getRestaurantFromYelp = () => {
-    const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&location=Paris'
+    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`
     const corsUrl = 'https://cors-anywhere.herokuapp.com'
     const finalUrl = corsUrl + '/' + yelpUrl
 
@@ -28,13 +28,12 @@ export default function Home() {
 
   useEffect(() => {
     getRestaurantFromYelp();
-    console.log(restaurantData)
-  }, [])
+  }, [city])
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
       <View style={{ backgroundColor: "white", padding: 15 }}>
         <HeaderTabs />
-        <SearchBar />
+        <SearchBar cityHandler={setCity} />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />

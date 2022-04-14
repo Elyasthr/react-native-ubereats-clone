@@ -3,10 +3,20 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import Ionicons from "react-native-vector-icons/Ionicons"
 import AntDesign from "react-native-vector-icons/AntDesign"
 
-export default function SearchBar() {
+export default function SearchBar({ cityHandler }) {
   return (
     <View style={{ marginTop: 15, flexDirection: "row" }}>
       <GooglePlacesAutocomplete
+        query={{ key: "AIzaSyDqqk4h_07zhY0LwMoIG3XAk6VUOG53uhg" }}
+        onPress={(data, details = null) => {
+          const city = data.description.split(',')[0]
+          cityHandler(city)
+        }}
+        requestUrl={{
+          url:
+            'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
+          useOnPlatform: 'web',
+        }}
         placeholder="Search..."
         styles={{
           textInput: {

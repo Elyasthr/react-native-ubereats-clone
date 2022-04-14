@@ -42,6 +42,7 @@ export default function RestaurantItems(props) {
             padding: 15,
             backgroundColor: "white"
           }}
+            key={index}
           >
             <RestaurentImage image={restaurant.image_url} />
             <RestaurentInfo name={restaurant.name} rating={restaurant.rating} />
