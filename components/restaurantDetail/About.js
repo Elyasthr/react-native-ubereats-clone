@@ -1,9 +1,17 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
+const yelpRestaurantInfo = {
+  name: 'Farmhouse Kitchen Thai Cuisine',
+  image: "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
+  price: '$$',
+  reviews: '1500',
+  rating: 5,
+  categories: [{ title: "Thai" }, { title: "Comfort Food" }],
+};
 
-const image = "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg";
-const title = 'Farmhouse Kitchen Thai Cuisine';
-const description = "Thai • Comfort Food • $$ • 4* (2913+)";
+const { name, image, price, reviews, rating, categories } = yelpRestaurantInfo;
+const formattedCategories = categories.map((categorie) => categorie.title).join(" • ");
+const description = `${formattedCategories} ${price ? " • " + price : ""} • 💳 • ${rating} ⭐  ${reviews}+`;
 
 export default function About() {
 
@@ -11,7 +19,7 @@ export default function About() {
 
     <View>
       <RestaurantImage image={image} />
-      <RestaurantTitle title={title} />
+      <RestaurantName name={name} />
       <RestaurantDescription description={description} />
     </View>
 
@@ -22,7 +30,7 @@ const RestaurantImage = (props) => (
   <Image source={{ uri: props.image }} style={{ width: "100%", height: 180 }} />
 )
 
-const RestaurantTitle = (props) => (
+const RestaurantName = (props) => (
   <Text
     style={{
       fontSize: 29,
@@ -31,7 +39,7 @@ const RestaurantTitle = (props) => (
       marginHorizontal: 15
     }}
   >
-    {props.title}</Text>
+    {props.name}</Text>
 )
 
 const RestaurantDescription = (props) => (
