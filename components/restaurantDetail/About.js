@@ -1,19 +1,18 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
-const yelpRestaurantInfo = {
-  name: 'Farmhouse Kitchen Thai Cuisine',
-  image: "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
-  price: '$$',
-  reviews: '1500',
-  rating: 5,
-  categories: [{ title: "Thai" }, { title: "Comfort Food" }],
-};
+// const yelpRestaurantInfo = {
+//   name: 'Farmhouse Kitchen Thai Cuisine',
+//   image: "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
+//   price: '$$',
+//   reviews: '1500',
+//   rating: 4.5,
+//   categories: [{ title: "Thai" }, { title: "Comfort Food" }],
+// };
 
-const { name, image, price, reviews, rating, categories } = yelpRestaurantInfo;
-const formattedCategories = categories.map((categorie) => categorie.title).join(" • ");
-const description = `${formattedCategories} ${price ? " • " + price : ""} • 💳 • ${rating} ⭐  ${reviews}+`;
-
-export default function About() {
+export default function About(props) {
+  const { name, image, price, reviews, rating, categories } = props.route.params;
+  const formattedCategories = categories.map((categorie) => categorie.title).join(" • ");
+  const description = `${formattedCategories} ${price ? " • " + price : ""} • 💳  • ${rating} ⭐   ${reviews}+`;
 
   return (
 

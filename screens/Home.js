@@ -9,7 +9,7 @@ import BottomTabs from "../components/home/BottomTabs";
 
 const YELP_API_KEY = "Bearer QkEWkOg-_eY998JxUrW7J2BC0IgjHh4jDeUFZWtvxHQ2nSr6h2Hrm0Qp4370hwAY1vFWhKmWGQSUZBNHVy0KSsq5vS9tlVNjnf391a89-szCjdKRYfYPaJaWdZ1WYnYx"
 
-export default function Home() {
+export default function Home({ navigation }) {
   const [restaurantData, setRestaurantData] = useState(localRestaurants);
   const [city, setCity] = useState('Paris')
   const [activeTab, setActiveTab] = useState('Delivery')
@@ -35,6 +35,7 @@ export default function Home() {
   useEffect(() => {
     getRestaurantFromYelp();
   }, [city, activeTab])
+
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
       <View style={{ backgroundColor: "white", padding: 15 }}>
@@ -43,7 +44,7 @@ export default function Home() {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />
-        <RestaurantItems restaurantData={restaurantData} />
+        <RestaurantItems restaurantData={restaurantData} navigation={navigation} />
       </ScrollView>
       <Divider width={1} />
       <BottomTabs />
