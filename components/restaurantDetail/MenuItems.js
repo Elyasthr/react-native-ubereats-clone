@@ -59,9 +59,9 @@ export default function MenuItems({ restaurantName }) {
     }
   });
 
-  const cartItems = useSelector(state => state.costReducer.selectItem.items);
+  const cartItems = useSelector(state => state.cartReducer.selectedItems.items);
 
-  const isFoodInCart = (food, costItem) => {
+  const isFoodInCart = (food, cartItems) => {
     return Boolean(cartItems.find((item) => item.title === food.title))
   }
 
