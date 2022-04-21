@@ -63,32 +63,30 @@ export default function ViewCart() {
                 <OrderItem key={index} item={item} />
               ))
             }
+            <View style={styles.subTotalContainer}>
+              <Text style={styles.subTotalText}>Subtotal</Text>
+              <Text>{totalPrice}</Text>
+            </View>
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: 'black',
+                  marginTop: 20,
+                  alignItems: "center",
+                  padding: 13,
+                  borderRadius: 30,
+                  width: 300,
+                  position: 'relative'
+                }}
+                onPress={() => setModelVisible(false)}
+              >
+                <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
+                <Text style={{ position: "absolute", right: 20, color: "white", fontSize: 15, top: 17 }}>{total ? totalPrice : ""}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </>
-
-
-      // <View style={{
-      //   flex: 1,
-      //   justifyContent: "center",
-      //   alignItems: "center",
-      //   marginTop: 30,
-      // }}>
-      //   <View style={{
-      //     backgroundColor: "black",
-      //     padding: 10,
-      //     borderRadius: 30,
-      //     width: 150,
-      //     alignItems: "center"
-      //   }}
-      //   >
-      //     <TouchableOpacity onPress={() => setModelVisible(false)}>
-      //       <Text style={{
-      //         color: "white"
-      //       }}>Checkout</Text>
-      //     </TouchableOpacity>
-      //   </View>
-      // </View>
     )
   }
 
